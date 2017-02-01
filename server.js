@@ -15,13 +15,13 @@ function getPosts() {
   }];
 }
 
-app.use(express.static('./'));
-app.use(express.static('./assets'));
+app.use(express.static('assets'));
 
 app.get('/api/posts', (req, res) => res.json(getPosts()));
 app.get('/api/*', (req, res) => res.status(404).send('Not Found'));
-app.get('*', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
+
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + 'assets/index.html');
 });
 
 const server = app.listen(3000, () => {

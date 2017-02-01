@@ -2,7 +2,6 @@
 elm-stuff/
 # elm-repl generated files
 repl-temp-*
-assets
 node_modules
-assets/
+assets/js
 tests/compiled

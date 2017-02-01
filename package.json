@@ -8,7 +8,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "build": "elm make src/Main.elm --output assets/app.js",
+    "build": "elm make src/Main.elm --output assets/js/app.js",
     "prestart": "npm run build",
     "start": "node server.js",
     "test": "cd tests; npm test; cd .."
