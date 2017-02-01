@@ -1,22 +1,20 @@
 module View.Header exposing (view)
 
-import Common.Events.Util exposing (onClick)
+import Common.Html.Util exposing (linkAttrs)
 import Html exposing (Html, Attribute, text, a, header)
 import Html.Attributes exposing (class, href)
 import Messages exposing (Msg(..))
+import Routing.Routes as Routing
 
 
 view : Html Msg
 view =
     header
         [ class "main-header" ]
-        [ a (linkAttrs ShowHome "/") [ text "Home" ]
+        [ a (headerLinkAttrs ShowHome <| Routing.reverse Routing.HomeRoute) [ text "Home" ]
         ]
 
 
-linkAttrs : Msg -> String -> List (Attribute Msg)
-linkAttrs message link =
-    [ onClick message
-    , href link
-    , class "nav-link"
-    ]
+headerLinkAttrs : Msg -> String -> List (Attribute Msg)
+headerLinkAttrs =
+    linkAttrs "nav-link"
