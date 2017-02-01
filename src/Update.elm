@@ -10,6 +10,20 @@ import Routing.Routes as Routing
 update : Msg -> State -> ( State, Cmd Msg )
 update msg state =
     case msg of
+        FetchSucceed posts ->
+            let
+                _ =
+                    Debug.log "posts" posts
+            in
+                ( state, Cmd.none )
+
+        FetchFail err ->
+            let
+                _ =
+                    Debug.log "error" err
+            in
+                ( state, Cmd.none )
+
         ShowHome ->
             ( state, Navigation.newUrl (Routing.reverse HomeRoute) )
 

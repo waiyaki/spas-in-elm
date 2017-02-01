@@ -4,6 +4,7 @@ import ElmTest exposing (Test, suite, test, assertEqual)
 import ElmTest
 import Routing.RoutesTests as RoutesTests
 import Routing.ParserTests as ParserTests
+import Test.Decoders.Posts as DecoderTests
 
 
 main : Program Never
@@ -17,4 +18,5 @@ allTests =
         "All Tests"
         [ RoutesTests.tests
         , ParserTests.tests
+        , DecoderTests.tests
         ]

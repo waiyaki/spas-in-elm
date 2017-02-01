@@ -8,6 +8,7 @@
   },
   "devDependencies": {},
   "scripts": {
+    "build": "elm make src/Main.elm --output assets/app.js",
     "test": "cd tests; npm test; cd .."
   },
   "repository": {
