@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "premake": "elm package install -y",
+    "make": "elm make Test.elm --output=compiled/test.js",
+    "pretest": "npm run make",
+    "test": "node -r ./mock-document.js compiled/test.js"
   },
   "keywords": [],
   "author": "",
