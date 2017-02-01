@@ -5,3 +5,4 @@ repl-temp-*
 assets
 node_modules
 assets/
+tests/compiled
