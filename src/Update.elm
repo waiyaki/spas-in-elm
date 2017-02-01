@@ -15,7 +15,7 @@ update msg state =
                 _ =
                     Debug.log "posts" posts
             in
-                ( state, Cmd.none )
+                ( { state | posts = Just posts }, Cmd.none )
 
         FetchFail err ->
             let

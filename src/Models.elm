@@ -4,7 +4,9 @@ import Routing.Routes exposing (Route)
 
 
 type alias State =
-    { route : Route }
+    { route : Route
+    , posts : Maybe (List Post)
+    }
 
 
 type alias Post =
@@ -17,4 +19,6 @@ type alias Post =
 
 newState : Route -> State
 newState route =
-    { route = route }
+    { route = route
+    , posts = Nothing
+    }
