@@ -1,4 +1,4 @@
-module Routing.ParserTests exposing (..)
+module Test.Routing.Parsers exposing (..)
 
 import Navigation
 import ElmTest exposing (Test, suite, test, assertEqual, assertNotEqual)

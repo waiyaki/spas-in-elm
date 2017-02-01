@@ -1,4 +1,4 @@
-module Routing.RoutesTests exposing (tests)
+module Test.Routing.Routes exposing (tests)
 
 import ElmTest exposing (Test, suite, test, assertEqual)
 import Routing.Routes exposing (..)

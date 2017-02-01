@@ -2,8 +2,8 @@ module Test exposing (..)
 
 import ElmTest exposing (Test, suite, test, assertEqual)
 import ElmTest
-import Routing.RoutesTests as RoutesTests
-import Routing.ParserTests as ParserTests
+import Test.Routing.Routes as RoutesTests
+import Test.Routing.Parsers as ParserTests
 import Test.Decoders.Posts as DecoderTests
 
 
