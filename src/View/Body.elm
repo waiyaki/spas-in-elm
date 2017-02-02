@@ -23,7 +23,7 @@ bodyContent state =
             postListView state.posts
 
         PostRoute postId ->
-            PostView.view postId
+            PostView.view state.current
 
         _ ->
             NotFoundView.view
@@ -47,7 +47,7 @@ postList posts =
 postEntry : Post -> Html Msg
 postEntry post =
     li [ class "post-entry" ]
-        [ a (postLinkAttrs (ShowPost 89) <| Routing.reverse (PostRoute 89))
+        [ a (postLinkAttrs (ShowPost post.id) <| Routing.reverse (PostRoute post.id))
             [ h2 [ class "post-header" ] [ text post.title ]
             , p [ class "post-body" ] [ text post.body ]
             ]

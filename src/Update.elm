@@ -5,24 +5,35 @@ import Models exposing (State)
 import Messages exposing (Msg(..))
 import Routing.Routes exposing (..)
 import Routing.Routes as Routing
+import Tasks exposing (..)
 
 
 update : Msg -> State -> ( State, Cmd Msg )
 update msg state =
     case msg of
-        FetchSucceed posts ->
+        PostReceived post ->
             let
-                _ =
-                    Debug.log "posts" posts
+                newState =
+                    { state | current = Just post, loading = False }
             in
-                ( { state | posts = Just posts }, Cmd.none )
+                ( newState, Cmd.none )
 
-        FetchFail err ->
+        PostsReceived posts ->
             let
-                _ =
-                    Debug.log "error" err
+                newState =
+                    { state | loading = False, posts = Just posts }
             in
-                ( state, Cmd.none )
+                ( newState, Cmd.none )
+
+        FetchFailed err ->
+            let
+                newState =
+                    { state
+                        | loading = False
+                        , error = Just "An error occurred while retrieving data"
+                    }
+            in
+                ( newState, Cmd.none )
 
         ShowHome ->
             ( state, Navigation.newUrl (Routing.reverse HomeRoute) )
@@ -37,4 +48,26 @@ update msg state =
 
 urlUpdate : Route -> State -> ( State, Cmd Msg )
 urlUpdate route state =
-    ( { state | route = route }, Cmd.none )
+    case route of
+        HomeRoute ->
+            let
+                newState =
+                    { state | posts = Nothing, route = route, loading = True }
+
+                newCmd =
+                    fetchPosts
+            in
+                ( newState, newCmd )
+
+        PostRoute postId ->
+            let
+                newState =
+                    { state | current = Nothing, route = route, loading = True }
+
+                newCmd =
+                    fetchPost postId
+            in
+                ( newState, newCmd )
+
+        _ ->
+            ( { state | route = route }, Cmd.none )
