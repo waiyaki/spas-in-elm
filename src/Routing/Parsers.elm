@@ -41,9 +41,15 @@ homeParser =
         ]
 
 
+newPostParser : Parser a a
+newPostParser =
+    s "post" </> s "new"
+
+
 routeParser : Parser (Route -> a) a
 routeParser =
     oneOf
         [ format PostRoute postParser
         , format HomeRoute homeParser
+        , format NewPostRoute newPostParser
         ]

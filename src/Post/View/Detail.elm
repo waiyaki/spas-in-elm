@@ -1,4 +1,4 @@
-module Post.View exposing (view)
+module Post.View.Detail exposing (view)
 
 import Html exposing (Html, div, text, h2)
 import Html.Attributes exposing (class)

@@ -8,6 +8,8 @@ type alias PostId =
 type Route
     = HomeRoute
     | PostRoute PostId
+    | EditPostRoute PostId
+    | NewPostRoute
     | NotFound
 
 
@@ -16,6 +18,12 @@ reverse route =
     case route of
         PostRoute postId ->
             "/post/" ++ toString postId
+
+        NewPostRoute ->
+            "/post/new"
+
+        EditPostRoute postId ->
+            "/post/" ++ (toString postId) ++ "/edit"
 
         _ ->
             "/"
